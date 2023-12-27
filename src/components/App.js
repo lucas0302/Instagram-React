@@ -1,9 +1,11 @@
-import NavBar from "./Navbar"
+import Corpo from "./Corpo"
+import Navbar from "./Navbar"
 
 function App() {
     return(
         <div>
-            <NavBar />
+            <Navbar/>
+            <Corpo/>
         </div>
     )
     

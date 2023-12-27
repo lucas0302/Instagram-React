@@ -1,4 +1,4 @@
-function NavBar() {
+function Navbar() {
     return (
         <div class="root">
             <div class="navbar">
@@ -29,4 +29,4 @@ function NavBar() {
     )
 
 }
-export default NavBar
+export default Navbar
