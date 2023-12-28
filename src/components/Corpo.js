@@ -1,14 +1,18 @@
-import Stories from "./Stories"
-import Posts from "./Posts"
-import Sidebar from "./Sidebar"
+import Stories from "./Stories";
+import Posts from "./Posts";
+import Sidebar from "./Sidebar";
 function Corpo() {
-    return(
+    return (
         <>
-            <Stories/>
-            <Posts/>
-            <Sidebar/>
+            <div class="corpo">
+                <div class="esquerda">
+                    <Stories />
+                    <Posts />
+                </div>
+                <Sidebar />
+            </div>
         </>
     );
 }
 
-export default Corpo
+export default Corpo;
