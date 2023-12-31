@@ -1,7 +1,8 @@
+import { useState } from "react";
 function Posts() {
   const post = [
     {
-      id:1,
+      id: 1,
       userName: "meowed",
       userImagem: "assets/img/meowed.svg",
       contentImage: "assets/img/gato-telefone.svg",
@@ -10,7 +11,7 @@ function Posts() {
       initialLikesAmount: "101502"
     },
     {
-      id:2,
+      id: 2,
       userName: "barked",
       userImagem: "assets/img/barked.svg",
       contentImage: "assets/img/dog.svg",
@@ -25,7 +26,7 @@ function Posts() {
 
       {post.map((p) => (
 
-        <Post key={p.id}userName={p.userName} userImagem={p.userImagem}
+        <Post key={p.id} userName={p.userName} userImagem={p.userImagem}
           contentImage={p.contentImage} likedByImage={p.likedByImage}
           likedByText={p.likedByText} initialLikesAmount={p.initialLikesAmount}>
         </Post>
@@ -37,6 +38,8 @@ function Posts() {
 }
 
 function Post(props) {
+  const [salvo, setSalvo] = useState(false);
+  const [salvoHeart, setSalvoHeart] = useState(false);
   return (
     <div className="post">
       <div className="topo">
@@ -56,12 +59,12 @@ function Post(props) {
       <div className="fundo">
         <div className="acoes">
           <div>
-            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon onClick={()=>setSalvoHeart(!salvoHeart)} name={salvoHeart ? "heart" : "heart-outline"}></ion-icon>
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon name="bookmark-outline"></ion-icon>
+            <ion-icon onClick={() => setSalvo(!salvo)} name={salvo ? "bookmark" : "bookmark-outline"}></ion-icon>
           </div>
         </div>
 
