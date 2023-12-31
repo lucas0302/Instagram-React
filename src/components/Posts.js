@@ -8,7 +8,7 @@ function Posts() {
       contentImage: "assets/img/gato-telefone.svg",
       likedByImage: "assets/img/respondeai.svg",
       likedByText: "responasadeai",
-      initialLikesAmount: "101502"
+      initialLikesAmount: "1002"
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ function Posts() {
       contentImage: "assets/img/dog.svg",
       likedByImage: "assets/img/adorable_animals.svg",
       likedByText: "adorable_animals",
-      initialLikesAmount: "7033"
+      initialLikesAmount: "1024"
     }
   ]
 
@@ -39,7 +39,24 @@ function Posts() {
 
 function Post(props) {
   const [salvo, setSalvo] = useState(false);
-  const [salvoHeart, setSalvoHeart] = useState(false);
+  const [curtido, setCurtido] = useState(false);
+  const [numeroCurtidas, setNumeroCurtidas] = useState(props.initialLikesAmount);
+
+  function curtir() {
+    if (curtido) {
+      setNumeroCurtidas(numeroCurtidas - 1);
+    } else {
+      setNumeroCurtidas(numeroCurtidas + 1);
+    }
+    setCurtido(!curtido);
+  }
+
+  function curtirPelaImagem() {
+    if (!curtido) {
+      setNumeroCurtidas(numeroCurtidas + 1);
+      setCurtido(true);
+    }
+  }
   return (
     <div className="post">
       <div className="topo">
@@ -53,15 +70,15 @@ function Post(props) {
       </div>
 
       <div className="conteudo">
-        <img src={props.contentImage} alt="gato-conteudo do post" />
+        <img onDoubleClick={curtirPelaImagem} src={props.contentImage} alt="gato-conteudo do post" />
       </div>
 
       <div className="fundo">
         <div className="acoes">
           <div>
-            <ion-icon onClick={()=>setSalvoHeart(!salvoHeart)} name={salvoHeart ? "heart" : "heart-outline"}></ion-icon>
-            <ion-icon name="chatbubble-outline"></ion-icon>
-            <ion-icon name="paper-plane-outline"></ion-icon>
+            <ion-icon onClick={curtir} class={curtido ? "vermelho" : ""} name={curtido ? "heart": "heart-outline"}/>
+            <ion-icon name="chatbubble-outline" />
+            <ion-icon name="paper-plane-outline" />
           </div>
           <div>
             <ion-icon onClick={() => setSalvo(!salvo)} name={salvo ? "bookmark" : "bookmark-outline"}></ion-icon>
@@ -71,7 +88,7 @@ function Post(props) {
         <div className="curtidas">
           <img src={props.likedByImage} alt={props.likedByText} />
           <div className="texto">
-            Curtido por <strong>{props.likedByText}</strong> e <strong>outras {props.initialLikesAmount} pessoas</strong>
+            Curtido por <strong>{props.likedByText}</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
           </div>
         </div>
       </div>
