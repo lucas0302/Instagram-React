@@ -308,3 +308,7 @@ ion-icon {
 .vermelho{
   color: red;
 }
+
+.conteudo{
+  position: relative;
+}

@@ -41,6 +41,7 @@ function Post(props) {
   const [salvo, setSalvo] = useState(false);
   const [curtido, setCurtido] = useState(false);
   const [numeroCurtidas, setNumeroCurtidas] = useState(props.initialLikesAmount);
+  const [animation, setAnimation] = useState(false);
 
   function curtir() {
     if (curtido) {
@@ -56,7 +57,15 @@ function Post(props) {
       setNumeroCurtidas(numeroCurtidas + 1);
       setCurtido(true);
     }
+
+    const animationTiming = 500;
+    setAnimation(true);
+
+    setTimeout(() => {
+      setAnimation(false);
+    }, animationTiming);
   }
+
   return (
     <div className="post">
       <div className="topo">
@@ -70,13 +79,14 @@ function Post(props) {
       </div>
 
       <div className="conteudo">
+        <ion-icon name="heart" class={`animated-heart ${animation ? "scale-up" : "invisible"}`} />
         <img onDoubleClick={curtirPelaImagem} src={props.contentImage} alt="gato-conteudo do post" />
       </div>
 
       <div className="fundo">
         <div className="acoes">
           <div>
-            <ion-icon onClick={curtir} class={curtido ? "vermelho" : ""} name={curtido ? "heart": "heart-outline"}/>
+            <ion-icon onClick={curtir} class={curtido ? "vermelho" : ""} name={curtido ? "heart" : "heart-outline"} />
             <ion-icon name="chatbubble-outline" />
             <ion-icon name="paper-plane-outline" />
           </div>

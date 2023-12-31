@@ -1,0 +1,29 @@
+.animated-heart {
+    width: 150px;
+    height: 150px;
+    color: white;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.scale-up {
+    animation: scale-up 0.3s;
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(0.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
