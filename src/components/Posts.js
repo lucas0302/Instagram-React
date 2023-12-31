@@ -6,7 +6,7 @@ function Posts() {
       userImagem: "assets/img/meowed.svg",
       contentImage: "assets/img/gato-telefone.svg",
       likedByImage: "assets/img/respondeai.svg",
-      likedByText: "respondeai",
+      likedByText: "responasadeai",
       initialLikesAmount: "101502"
     },
     {
