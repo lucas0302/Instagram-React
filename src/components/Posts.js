@@ -37,10 +37,14 @@ function Posts() {
   );
 }
 
-function Post(props) {
+// Desestruturação de objeto
+// Não preciso usar o "props." so escrever o parametro depois do "props."
+function Post({userName, userImagem, contentImage, likedByImage, likedByText, initialLikesAmount}) {
+
+  //Variavel de estado e um D=desestruturação de Arry
   const [salvo, setSalvo] = useState(false);
   const [curtido, setCurtido] = useState(false);
-  const [numeroCurtidas, setNumeroCurtidas] = useState(props.initialLikesAmount);
+  const [numeroCurtidas, setNumeroCurtidas] = useState(initialLikesAmount);
   const [animation, setAnimation] = useState(false);
 
   function curtir() {
@@ -70,8 +74,8 @@ function Post(props) {
     <div className="post">
       <div className="topo">
         <div className="usuario">
-          <img src={props.userImagem} alt={props.userName} />
-          {props.userName}
+          <img src={userImagem} alt={userName} />
+          {userName}
         </div>
         <div className="acoes">
           <ion-icon name="ellipsis-horizontal"></ion-icon>
@@ -80,7 +84,7 @@ function Post(props) {
 
       <div className="conteudo">
         <ion-icon name="heart" class={`animated-heart ${animation ? "scale-up" : "invisible"}`} />
-        <img onDoubleClick={curtirPelaImagem} src={props.contentImage} alt="gato-conteudo do post" />
+        <img onDoubleClick={curtirPelaImagem} src={contentImage} alt="gato-conteudo do post" />
       </div>
 
       <div className="fundo">
@@ -96,9 +100,9 @@ function Post(props) {
         </div>
 
         <div className="curtidas">
-          <img src={props.likedByImage} alt={props.likedByText} />
+          <img src={likedByImage} alt={likedByText} />
           <div className="texto">
-            Curtido por <strong>{props.likedByText}</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
+            Curtido por <strong>{likedByText}</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
           </div>
         </div>
       </div>
